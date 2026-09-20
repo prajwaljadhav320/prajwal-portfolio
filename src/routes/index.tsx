@@ -9,24 +9,89 @@ import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
 const title = "Prajwal Jadhav - Motion Designer & Video Editor";
+
 const description =
-  "A video production portfolio: story-driven live action, editorial, motion design and color for global brands and creative independents.";
+  "Prajwal Jadhav — Motion Designer and Video Editor creating engaging visual experiences through animation, motion graphics, editing and visual storytelling.";
+
 const ogImage =
-  "https://remedyeditorial.com/wp-content/uploads/2026/06/Remedy_Editorial_OG_1200x600.webp";
+  "https://prajwal-portfolio-weld.vercel.app/og-image.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
+      {
+        title,
+      },
+
+      {
+        name: "description",
+        content: description,
+      },
+
+      // Open Graph
+      {
+        property: "og:title",
+        content: title,
+      },
+
+      {
+        property: "og:description",
+        content: description,
+      },
+
+      {
+        property: "og:type",
+        content: "website",
+      },
+
+      {
+        property: "og:url",
+        content: "https://prajwal-portfolio-weld.vercel.app/",
+      },
+
+      {
+        property: "og:image",
+        content: ogImage,
+      },
+
+      {
+        property: "og:image:width",
+        content: "1200",
+      },
+
+      {
+        property: "og:image:height",
+        content: "630",
+      },
+
+      {
+        property: "og:image:alt",
+        content: "Prajwal Jadhav — Motion Designer & Video Editor",
+      },
+
+      // Twitter / X
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+
+      {
+        name: "twitter:title",
+        content: title,
+      },
+
+      {
+        name: "twitter:description",
+        content: description,
+      },
+
+      {
+        name: "twitter:image",
+        content: ogImage,
+      },
     ],
   }),
+
   component: Index,
 });
 
@@ -34,6 +99,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-transparent text-foreground">
       <Nav />
+
       <main>
         <Hero />
         <FeaturedWork />
@@ -42,6 +108,7 @@ function Index() {
         <Numbers />
         <Contact />
       </main>
+
       <Footer />
     </div>
   );
