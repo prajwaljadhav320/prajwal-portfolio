@@ -3,13 +3,13 @@ import { Reveal } from "./Reveal";
 
 export function Hero() {
   return (
-    <section id="top" className="px-5 pt-24 md:px-10 lg:px-14">
+    <section id="top" className="px-4 pt-24 md:px-10 lg:px-14">
       <Reveal>
         <h1 className="sr-only">{site.hero.headline}</h1>
         <div
-          aria-hidden
-          className="font-display select-none bg-gradient-to-r from-primary via-violet-400 to-white bg-clip-text text-transparent leading-[0.8] font-bold tracking-[0.02em] text-[clamp(3.5rem,15.5vw,17rem)] flex justify-between"
-        >
+  aria-hidden
+  className="font-display select-none bg-gradient-to-r from-primary via-violet-400 to-white bg-clip-text text-transparent leading-[0.8] font-bold tracking-[0.02em] text-[clamp(2.8rem,13vw,17rem)] flex justify-between"
+>
           {site.brand.wordmark.split("").map((c, i) => (
             <span
               key={i}
@@ -24,9 +24,9 @@ export function Hero() {
 
       <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2 md:gap-16">
         <Reveal delay={120}>
-          <div className="flex items-start gap-5">
+          <div className="flex items-start gap-4">
             <img src={site.brand.logoMark} alt="" className="mt-1 h-14 w-14 shrink-0" />
-            <p className="max-w-md text-[clamp(1.75rem,3.4vw,3rem)] font-semibold leading-[1.08] tracking-tight">
+            <p className="max-w-md text-[clamp(1.5rem,7vw,3rem)] font-semibold leading-[1.08] tracking-tight">
               {site.hero.headline}
             </p>
           </div>

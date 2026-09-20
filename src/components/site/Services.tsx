@@ -3,16 +3,16 @@ import { Reveal } from "./Reveal";
 
 export function Services() {
   return (
-    <section id="services" className="px-5 pb-24 md:px-10 md:pb-36 lg:px-14">
+    <section id="services" className="px-4 pb-16 md:px-10 md:pb-36 lg:px-14">
       {/* Section Heading */}
       <Reveal>
-        <h2 className="text-[clamp(2rem,4vw,2.9rem)] font-semibold tracking-tight">
+        <h2 className="text-[clamp(1.8rem,8vw,2.9rem)] font-semibold tracking-tight">
           {site.services.title}
         </h2>
       </Reveal>
 
       {/* Image + Text */}
-      <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-16">
+      <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-16">
         {/* Image */}
         <Reveal delay={120}>
           <div className="group overflow-hidden rounded-xl bg-muted">
@@ -20,7 +20,7 @@ export function Services() {
               src={site.services.image}
               alt="The team in a creative development session"
               loading="lazy"
-              className="aspect-video w-full object-cover transition-transform duration-[900ms] ease-smooth group-hover:scale-[1.04]"
+              className="block aspect-video w-full max-w-full object-cover transition-transform duration-[900ms] ease-smooth group-hover:scale-[1.04]"
             />
           </div>
         </Reveal>

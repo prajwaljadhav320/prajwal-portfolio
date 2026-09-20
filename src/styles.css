@@ -22,23 +22,29 @@
   --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
   --color-ink-muted: var(--ink-muted);
+
   --shadow-float: 0 12px 40px -12px oklch(0 0 0 / 0.25);
+
   --animate-letter-in: letter-in 1s var(--ease-smooth) both;
+
   @keyframes letter-in {
     from {
       opacity: 0;
       transform: translateY(0.25em);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,8 +65,6 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -77,7 +81,6 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
@@ -149,26 +152,35 @@
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
+
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
+
   --primary: oklch(0.929 0.013 255.508);
   --primary-foreground: oklch(0.208 0.042 265.755);
+
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
+
   --muted: oklch(0.279 0.041 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);
+
   --accent: oklch(0.279 0.041 260.031);
   --accent-foreground: oklch(0.984 0.003 247.858);
+
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
+
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+
   --sidebar: oklch(0.208 0.042 265.755);
   --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -190,22 +202,26 @@
   }
 
   body {
-  background-color: var(--color-background);
+    background-color: var(--color-background);
 
-  background-image:
-    linear-gradient(
-      oklch(0.05 0.02 250 / 0.55),
-      oklch(0.05 0.02 250 / 0.55)
-    ),
-    url("/portfolio-background.jpg");
+    /*
+     * DESKTOP BACKGROUND
+     * This remains exactly as your original setup.
+     */
+    background-image:
+      linear-gradient(
+        oklch(0.05 0.02 250 / 0.55),
+        oklch(0.05 0.02 250 / 0.55)
+      ),
+      url("/portfolio-background.jpg");
 
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 
-  color: var(--color-foreground);
-}
+    color: var(--color-foreground);
+  }
 }
 
 @layer base {
@@ -222,6 +238,7 @@
 
 @utility no-scrollbar {
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -245,6 +262,7 @@
   text-transform: uppercase;
   color: var(--accent);
   transition: all 0.4s var(--ease-smooth);
+
   &:hover {
     background: var(--accent);
     color: var(--accent-foreground);
@@ -265,6 +283,7 @@
   background: var(--accent);
   color: var(--accent-foreground);
   transition: all 0.4s var(--ease-smooth);
+
   &:hover {
     background: transparent;
     color: var(--accent);
@@ -275,6 +294,7 @@
   position: relative;
   display: inline-block;
   transition: color 0.3s var(--ease-smooth);
+
   &::after {
     content: "";
     position: absolute;
@@ -287,14 +307,51 @@
     transform-origin: right;
     transition: transform 0.4s var(--ease-smooth);
   }
+
   &:hover::after {
     transform: scaleX(1);
     transform-origin: left;
   }
 }
+
+/*
+ * MOBILE
+ *
+ * Uses a separate mobile background image.
+ * Desktop is NOT affected by these rules.
+ */
 @media (max-width: 768px) {
+  html,
   body {
-    background-size: auto 100vh;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    /*
+     * MOBILE BACKGROUND
+     *
+     * This replaces only the desktop background image on mobile.
+     * The mobile artwork has been specifically composed for a
+     * tall/narrow screen, so we can preserve its proportions.
+     */
+    background-image:
+      linear-gradient(
+        oklch(0.05 0.02 250 / 0.55),
+        oklch(0.05 0.02 250 / 0.55)
+      ),
+      url("/portfolio-background-mobile.jpg");
+
+    background-size: 100% auto;
     background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
   }
 }

@@ -3,10 +3,10 @@ import { Reveal } from "./Reveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="px-5 pb-24 md:px-10 md:pb-36 lg:px-14">
-      <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+    <section id="contact" className="px-4 pb-16 md:px-10 md:pb-36 lg:px-14">
+      <div className="grid gap-8 md:grid-cols-2 md:gap-16">
         <Reveal>
-          <h2 className="text-[clamp(2rem,4vw,2.9rem)] font-semibold tracking-tight">
+          <h2 className="text-[clamp(1.8rem,8vw,2.9rem)] font-semibold tracking-tight">
             {site.contact.title}
           </h2>
         </Reveal>
@@ -18,7 +18,7 @@ export function Contact() {
             </p>
           </Reveal>
 
-          <div className="mt-10 space-y-6">
+          <div className="mt-8 space-y-5">
             <Reveal delay={160}>
               <p className="text-sm font-semibold">Email</p>
               <a
@@ -40,7 +40,7 @@ export function Contact() {
             </Reveal>
           </div>
 
-          <Reveal delay={320} className="mt-10">
+          <Reveal delay={320} className="mt-8">
             <a
               href={`mailto:${site.contact.email}`}
               className="btn-solid"
