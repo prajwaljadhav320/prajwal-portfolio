@@ -3,8 +3,8 @@ import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
-const [open, setOpen] = useState(false);
-const [stuck, setStuck] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -21,14 +21,13 @@ const [stuck, setStuck] = useState(false);
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4">
       <nav
-  className={cn(
-    "pointer-events-auto w-full max-w-md overflow-hidden rounded-3xl border backdrop-blur-xl",
-    "border-accent/30 bg-background/85 shadow-float",
-  )}
->
+        className={cn(
+          "pointer-events-auto w-full max-w-md overflow-hidden rounded-3xl border backdrop-blur-xl",
+          "border-accent/30 bg-background/85 shadow-float",
+        )}
+      >
         {/* TOP BAR */}
         <div className="flex h-[44px] items-center justify-between gap-3 px-3">
-          
           {/* LOGO */}
           <a
             href="#top"
@@ -42,23 +41,39 @@ const [stuck, setStuck] = useState(false);
               className="h-4 w-4 transition-transform duration-500 ease-out group-hover:scale-90"
             />
 
-            {/* Small hover ring */}
-            <span className="absolute inset-0 rounded-full border border-accent/0 transition-all duration-500 group-hover:border-accent/40 group-hover:scale-100 scale-75" />
+            <span className="absolute inset-0 scale-75 rounded-full border border-accent/0 transition-all duration-500 group-hover:scale-100 group-hover:border-accent/40" />
           </a>
 
           {/* WORDMARK */}
-<a
-  href="#top"
-  onClick={() => setOpen(false)}
-  className="group absolute left-1/2 -translate-x-1/2 font-display text-sm tracking-[0.35em] bg-gradient-to-r from-primary via-violet-400 to-white bg-clip-text text-transparent"
->
-  <span className="relative">
-    {site.brand.wordmark}
+          <a
+            href="#top"
+            onClick={() => setOpen(false)}
+            aria-label="Prajwal"
+            className="
+              group
+              absolute
+              left-1/2
+              -translate-x-1/2
+              font-display
+              text-sm
+              tracking-[0.35em]
+            "
+          >
+            {/* 
+             * IMPORTANT:
+             * wordmark-gradient is applied directly to the element
+             * containing the actual text.
+             *
+             * This is more reliable on Safari/iOS than applying
+             * background-clip:text to the parent <a>.
+             */}
+            <span className="wordmark-gradient relative inline-block">
+              {site.brand.wordmark}
 
-    {/* Animated underline */}
-    <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full" />
-  </span>
-</a>
+              {/* Animated underline */}
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full" />
+            </span>
+          </a>
 
           {/* MENU BUTTON */}
           <button
@@ -70,18 +85,16 @@ const [stuck, setStuck] = useState(false);
             className="group flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-accent/10"
           >
             <span className="relative flex h-4 w-5 flex-col justify-center gap-[5px]">
-              {/* Top line */}
               <span
                 className={cn(
-                  "block h-px w-5 bg-accent origin-center transition-all duration-500 ease-out",
+                  "block h-px w-5 origin-center bg-accent transition-all duration-500 ease-out",
                   open && "translate-y-[3px] rotate-45",
                 )}
               />
 
-              {/* Bottom line */}
               <span
                 className={cn(
-                  "block h-px w-5 bg-accent origin-center transition-all duration-500 ease-out",
+                  "block h-px w-5 origin-center bg-accent transition-all duration-500 ease-out",
                   open && "-translate-y-[3px] -rotate-45",
                 )}
               />
@@ -101,7 +114,6 @@ const [stuck, setStuck] = useState(false);
         >
           <div className="min-h-0 overflow-hidden">
             <div className="border-t border-accent/10 px-5 pb-5 pt-4">
-              
               {/* Small menu label */}
               <div
                 className={cn(
@@ -138,18 +150,15 @@ const [stuck, setStuck] = useState(false);
                       )}
                     >
                       <span className="flex items-center gap-3">
-                        {/* Number */}
                         <span className="w-5 text-[9px] tracking-wider text-muted-foreground transition-colors duration-300 group-hover:text-accent">
                           {String(index + 1).padStart(2, "0")}
                         </span>
 
-                        {/* Link */}
                         <span className="text-xl font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent">
                           {item.label}
                         </span>
                       </span>
 
-                      {/* Arrow */}
                       <span className="translate-x-2 text-sm text-accent opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                         ↗
                       </span>

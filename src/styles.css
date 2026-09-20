@@ -6,16 +6,6 @@
 
 /*
  * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
 @theme inline {
@@ -79,7 +69,6 @@
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -186,7 +175,6 @@
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
@@ -206,7 +194,6 @@
 
     /*
      * DESKTOP BACKGROUND
-     * This remains exactly as your original setup.
      */
     background-image:
       linear-gradient(
@@ -318,7 +305,6 @@
  * MOBILE
  *
  * Uses a separate mobile background image.
- * Desktop is NOT affected by these rules.
  */
 @media (max-width: 768px) {
   html,
@@ -329,13 +315,6 @@
   }
 
   body {
-    /*
-     * MOBILE BACKGROUND
-     *
-     * This replaces only the desktop background image on mobile.
-     * The mobile artwork has been specifically composed for a
-     * tall/narrow screen, so we can preserve its proportions.
-     */
     background-image:
       linear-gradient(
         oklch(0.05 0.02 250 / 0.55),
@@ -353,5 +332,76 @@
   video,
   iframe {
     max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   PRAJWAL WORDMARK
+   ========================================================= */
+
+/*
+ * Default:
+ * Blue → Purple → White gradient.
+ *
+ * This is used by both:
+ * - Hero PRAJWAL
+ * - Navbar PRAJWAL
+ */
+.wordmark-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--primary),
+    oklch(0.7 0.18 300),
+    #ffffff
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+
+/*
+ * Safari / WebKit
+ *
+ * Safari can have rendering problems when background-clipped
+ * text is simultaneously transformed/animated.
+ *
+ * Therefore:
+ * - Keep the gradient.
+ * - Keep the individual Hero letters.
+ * - Remove the animation from those letters.
+ * - Remove transforms from the wordmark.
+ *
+ * This lets Safari render the gradient as normal clipped text.
+ */
+@supports (-webkit-touch-callout: none) {
+  .wordmark-gradient {
+    background-image: linear-gradient(
+      90deg,
+      var(--primary),
+      oklch(0.7 0.18 300),
+      #ffffff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /*
+   * Disable the Hero letter animation on Safari.
+   *
+   * The original desktop animation remains unchanged.
+   */
+  .wordmark-gradient span {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
